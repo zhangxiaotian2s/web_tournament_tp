@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<title>队伍详情</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+
+	<body class="bk_gray">
+		<div class="wrap">
+			<div class="ditails_head clearfix">
+				<div class="row clearfix h_title">
+					<div class="col-xs-3">
+						<img src="" class="img-responsive" id="teamimg">
+					</div>
+					<div class="col-xs-9">
+						<h1 id="teamtitle"></h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-8 col-xs-offset-2">
+						<div class="row ditail_cj">
+							<div class="col-xs-4"><span class="color_red" id="curr_total"></span>本轮</div>
+							<div class="col-xs-4"><span class="color_red" id="team_total"></span>总杆</div>
+							<div class="col-xs-4"><span class="color_red" id="team_score"></span>成绩</div>
+						</div>
+					</div>
+					<div class="row selectbox">
+						<div class="selectbtnbox selectbtnlcbox" id="selectbtn">
+
+						</div>
+						<ul id="selectul" class="select_lc_ul  hidden">
+						
+						</ul>
+					</div>
+				</div>
+				<div class="blank1"></div>
+			</div>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tablestyle1 tablestyle1" id="teamdetailtable">
+			</table>
+		</div>
+		<div class="load" id="loading">
+			<img src="images/load.gif" class="img-responsive">
+		</div>
+	</body>
+	<script src="js/zeptoandtouch.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/team_detail.js" ></script>
+	
+
+</html>

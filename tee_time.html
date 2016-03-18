@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<title>出发时间</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+
+	<body class="bk_gray" style="overflow: hidden;">
+		<span class="Ac hidden"></span>
+		<div class="fixdnav" id="fixedaside">
+			<ul id="asidelistul">
+			</ul>
+		</div>
+		<div class="fixedrightbk hidden" id="fixedbk"></div>
+		<div class="fixdtapbtn" id="fixdtapbtn"> <span class="iconfont icon-zhankai"></span></div>
+		<div class="wrap" id="wrap">
+			<div class="tournament_head row clearfix">
+				<div class="imgbox col-xs-4">
+					<img src="" class="img-responsive" id="courseimg">
+				</div>
+				<div class="col-xs-8 pr">
+					<h1 id="coursetitle"></h1>
+					<div class="selectbtnbox" id="selectbtn">
+
+					</div>
+					<ul id="selectround" class="select_lc_ul hidden">
+
+					</ul>
+				</div>
+				<div class="blank05"></div>
+				<!--<p class="ts clear">
+					当前所在时区:西五区 ,您比当低时间快13小时
+					<br /><span>所有开球时间均为当地时间</span>
+				</p>-->
+				<div class="blank05"></div>
+			</div>
+			<div>
+				<table border="0" cellspacing="0" cellpadding="0" class="tournament_lc_nav">
+					<tr>
+						<th width="20%">出发TEE#</th>
+						<th width="25%">时间</th>
+						<th width="55%">球员</th>
+					</tr>
+				</table>
+				<table border="0" cellspacing="0" cellpadding="0" width="100%" class="table_lc_content" id="teetimetable">
+					
+				</table>
+			</div>
+		</div>
+		<div class="load" id="loading">
+			<img src="images/load.gif" class="img-responsive">
+		</div>
+	</body>
+	<script src="js/zeptoandtouch.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var tapbtn = document.getElementById('fixdtapbtn');
+		var fixedaside = document.getElementById('fixedaside');
+		var wrap = document.getElementById('wrap');
+		var fixedbk = document.getElementById('fixedbk')
+		tapbtn.addEventListener('tap', function(e) {
+			e.preventDefault();
+			asideMove(16);
+		}, false);
+		fixedaside.addEventListener('swipeLeft', function(e) {
+			e.preventDefault();
+			asideMove(0);
+		}, false);
+		fixedbk.addEventListener('click', function(e) {
+			e.preventDefault();
+			asideMove(0);
+		}, false);
+
+		function asideMove(mx) {
+			if (mx != 0) {
+				fixedbk.style.display = 'block'
+				fixedbk.style.opacity = 0.6
+			} else {
+				fixedbk.style.opacity = 0
+				fixedbk.style.display = 'none'
+			}
+			fixedaside.style.webkitTransitionDuration = '0.3s';
+			wrap.style.webkitTransitionDuration = '0.3s';
+			fixedaside.style.webkitTransform = 'translate3d(' + mx + 'rem ,0px, 0px) ';
+			wrap.style.webkitTransform = 'translate3d(' + mx + 'rem ,0px, 0px) ';
+		}
+		var selectul = $('#selectul'),
+			selectbtn = $('#selectbtn'),
+			selectcontent = $('.table_lc_content');
+		selectbtn.on('tap', function() {
+			selectul.toggle()
+		})
+		selectul.children('li').on('tap', function() {
+			selectul.hide()
+			selectbtn.text($(this).text())
+			selectcontent.eq($(this).index()).show().siblings('.table_lc_content').hide()
+		})
+	</script>
+	<script type="text/javascript" src="js/tee_time.js"></script>
+
+</html>

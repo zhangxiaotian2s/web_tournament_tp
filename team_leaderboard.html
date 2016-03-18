@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<title>排行榜</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+
+	<body class="bk_gray" style="overflow: hidden;">
+		<span class="Ac hidden"></span>
+		<div class="fixdnav" id="fixedaside">
+			<ul id="asidelistul">
+
+			</ul>
+		</div>
+		<div class="fixedrightbk hidden" id="fixedbk"></div>
+		<div class="fixdtapbtn" id="fixdtapbtn"> <span class="iconfont icon-zhankai"></span></div>
+		<div class="wrap" id="wrap">
+			<div class="toptz" id="noticebox">
+				<div class="toptznr scroll">
+					<span class="iconfont icon-laba"></span><span id="notice" ></span></div>
+			</div>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tablestyle1" id="ranklisttalbe">
+			</table>
+		</div>
+		<div class="load" id="loading">
+			<img src="images/load.gif" class="img-responsive">
+		</div>
+	</body>
+	<script src="js/zeptoandtouch.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var tapbtn = document.getElementById('fixdtapbtn');
+		var fixedaside = document.getElementById('fixedaside');
+		var wrap = document.getElementById('wrap');
+		var fixedbk = document.getElementById('fixedbk');
+		tapbtn.addEventListener('tap', function(e) {
+			e.preventDefault();
+			asideMove(16);
+		}, false);
+		fixedaside.addEventListener('swipeleft', function(e) {
+			e.preventDefault();
+			asideMove(0);
+		}, false);
+		fixedbk.addEventListener('tap', function(e) {
+			e.preventDefault();
+			asideMove(0);
+		}, false);
+
+		function asideMove(mx) {
+			if (mx != 0) {
+				fixedbk.style.display = 'block';
+				fixedbk.style.opacity = 0.6;
+			} else {
+				fixedbk.style.opacity = 0;
+				fixedbk.style.display = 'none';
+			}
+			fixedaside.style.webkitTransitionDuration = '0.3s';
+			wrap.style.webkitTransitionDuration = '0.3s';
+			fixedaside.style.webkitTransform = 'translate3d(' + mx + 'rem ,0px, 0px) ';
+			wrap.style.webkitTransform = 'translate3d(' + mx + 'rem ,0px, 0px) ';
+		};
+	</script>
+	<script type="text/javascript" src="js/team_leaderboard.js"></script>
+
+</html>
