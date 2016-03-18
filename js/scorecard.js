@@ -11,15 +11,14 @@ function scoreCard() {
 	this.started_at=document.getElementById('started_at');
 	this.table1 = document.getElementById('table1');
 	this.table2 = document.getElementById('table2');
-	
+	this.tee_uuid=getUrlParam('tee_uuid');
+	this.team_uuid=getUrlParam('team_uuid');
 };
 scoreCard.prototype.ajaxGetScoredcard = function() {
 	var self = this;
-	var _tee_uuid = getUrlParam('tee_uuid'),
-		_team_uuid = getUrlParam('team_uuid')
 	$.ajax({
 		type: "get",
-		url: self.scoreCardsurl + "team_uuid=" + _team_uuid + "&tee_uuid=" + _tee_uuid,
+		url: self.scoreCardsurl + "team_uuid=" + self.team_uuid + "&tee_uuid=" + self.tee_uuid,
 		dataType: 'json',
 		success: function(data) {
 			if (data.code == 200 || data.code == 10000) {
@@ -77,7 +76,7 @@ scoreCard.prototype.insertTabletwo = function(data) {
 
 //返回姓名tr
 scoreCard.prototype.backNameTr = function(data, arrname, startnumber) {
-	var _start = startnumber || 0
+	var _start = startnumber || 0;
 	var _html = '';
 	var _classname = '';
 	if (data.round_format == 1 || data.round_format == 3) {
@@ -146,7 +145,7 @@ scoreCard.prototype.setLoading = function(text,back) {
 	} else {
 		var _html='<p>' + text + '</p>';
 		 if(back){
-		 	_html+='<a href="javascript:history.go(-1)" >返回</a>'
+		 	_html+='<a href="javascript:history.go(-1)" >返回</a>';
 		 }
 		self.loading.innerHTML =_html;
 	}

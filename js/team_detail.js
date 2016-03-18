@@ -9,13 +9,13 @@ function teamDetail() {
 	this.team_score = document.getElementById('team_score');
 	this.teamDetailtable = document.getElementById('teamdetailtable');
 	this.loading = document.getElementById('loading');
+	this.teamdetailuuid= getUrlParam('teamdetail_uuid');
 };
 teamDetail.prototype.ajaxGetTeamDetails = function() {
 	var self = this;
-	var _uuid = getUrlParam('teamdetail_uuid');
 	$.ajax({
 		type: "get",
-		url: self.teamDetailurl + _uuid,
+		url: self.teamDetailurl + self.teamdetailuuid,
 		dataType: 'json',
 		success: function(data) {
 			if (data.code == 200 || data.code == 10000) {
@@ -82,7 +82,7 @@ teamDetail.prototype.insertDataValue = function(data, index) {
 		_html += '<td>' + _datalist[i].score + '</td>';
 		_html += '</tr>';
 	}
-	self.teamDetailtable.innerHTML =_html
+	self.teamDetailtable.innerHTML =_html;
 	self.tableTrTapFn();
 };
 //跳转到计分卡页面
@@ -106,7 +106,7 @@ teamDetail.prototype.setLoading = function(text,back) {
 	} else {
 		var _html='<p>' + text + '</p>';
 		 if(back){
-		 	_html+='<a href="javascript:history.go(-1)" >返回</a>'
+		 	_html+='<a href="javascript:history.go(-1)" >返回</a>';
 		 }
 		self.loading.innerHTML =_html;
 	}

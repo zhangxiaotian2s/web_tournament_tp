@@ -9,8 +9,8 @@ function tournamentTp() {
 	this.loading = document.getElementById('loading');
 	
 	this.tournament_uuid=getUrlParam('tournament_uuid');
-     	this.tournament_uuid = 'c533f3d3-9ff0-452a-8816-8c937081d939'//2个
-//	this.tournament_uuid = '2f7166a5-013c-4a50-b43c-48e566dd3b47'//4个
+    this.tournament_uuid = 'c533f3d3-9ff0-452a-8816-8c937081d939'//2个
+   //this.tournament_uuid = '2f7166a5-013c-4a50-b43c-48e566dd3b47'//4个
 	this.asideindex =sessionStorage.getItem('asideindex') ||  getUrlParam('asideindex') || 0;
 };
 //ajax获取侧边栏数据的方法

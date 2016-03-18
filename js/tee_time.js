@@ -20,7 +20,7 @@ teeTime.prototype.ajaxGetAsideList = function() {
 		url: self.asideurl + self.tournament_uuid,
 		success: function(data) {
 			if (data.code == 200 || data.code == 10000) {
-				self.insertAsideList(data.data)
+				self.insertAsideList(data.data);
 			} else {
 				self.setLoading('获取数据失败','back');
 			}
@@ -70,7 +70,7 @@ teeTime.prototype.asideListTapFn = function() {
 			}else{
 			window.location.href='team_leaderboard.html?tee_uuid='+this.getAttribute('data-uuid') + '&tournament_uuid=' + self.tournament_uuid + '&asideindex=' + this.getAttribute('data-index') + ''
 			}
-			sessionStorage.setItem('asideindex',this.getAttribute('data-index'))
+			sessionStorage.setItem('asideindex',this.getAttribute('data-index'));
 		}, false);
 	}
 };
@@ -98,14 +98,14 @@ teeTime.prototype.insertTeeTimeDate = function(data) {
 	var self = this;
 	self.coursetitle.innerText = data.course_name;
 	self.courseimg.src = data.image;
-	var _html = ''
+	var _html = '';
 	for (var i = 0; i < data.tee_times.length; i++) {
-		_html += '<li data-index='+i+'>' + data.tee_times[i].round_name + '</li>'
+		_html += '<li data-index='+i+'>' + data.tee_times[i].round_name + '</li>';
 	}
 	self.selectround.innerHTML = _html;
-	self.selectbtn.innerText = data.tee_times[0].round_name
-	self.selectTapFn(data)
-	self.insertTeeListFn(data.tee_times, 0)
+	self.selectbtn.innerText = data.tee_times[0].round_name;
+	self.selectTapFn(data);
+	self.insertTeeListFn(data.tee_times, 0);
 };
 
 //下拉选项的点击方法
@@ -123,7 +123,7 @@ teeTime.prototype.selectTapFn = function(data) {
 		_sectulli[i].addEventListener('tap', function() {
 			self.selectbtn.innerText = this.innerText;
 			self.selectround.style.display = 'none';
-			self.insertTeeListFn(data.tee_times, this.getAttribute('data-index'))
+			self.insertTeeListFn(data.tee_times, this.getAttribute('data-index'));
 		}, false)
 	}
 };
@@ -131,11 +131,11 @@ teeTime.prototype.selectTapFn = function(data) {
 teeTime.prototype.insertTeeListFn = function(data, index) {
 	var self = this;
 	var _data = data[index].tee_times;
-	var _html = ''
+	var _html = '';
 	for (var i = 0; i < _data.length; i++) {
 		_html += '<tr>';
 		_html += '<td width="20%">' + _data[i].started_hole + '</td><td width="25%">' + new Date(_data[i].started_at).Format('MM:dd') + '</td>';
-		_html += '<td width="55%"><table class="nr_talbe">'
+		_html += '<td width="55%"><table class="nr_talbe">';
 		for (var j = 0; j < _data[i].players.length; j++) {
 			_html += '<tr>';
 			_html +='<td width="30%"><img src='+_data[i].players[j].image+' class="img-responsive"></td>';
@@ -145,7 +145,7 @@ teeTime.prototype.insertTeeListFn = function(data, index) {
 		_html += '</table></td>';
 		_html += '</tr>';
 	}
-	self.teetimetable.innerHTML = _html
+	self.teetimetable.innerHTML = _html;
 }
 //loading 处理方法
 teeTime.prototype.setLoading = function(text,back) {
@@ -157,7 +157,7 @@ teeTime.prototype.setLoading = function(text,back) {
 	} else {
 		var _html='<p>' + text + '</p>';
 		 if(back){
-		 	_html+='<a href="javascript:history.go(-1)" >返回</a>'
+		 	_html+='<a href="javascript:history.go(-1)" >返回</a>';
 		 }
 		self.loading.innerHTML =_html;
 	}
